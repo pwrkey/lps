@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name | Links</title>
+  <title>Your Name | Link Hub</title>
+  <meta name="description" content="Connect with Your Name through website, Instagram, YouTube, and more. Explore personal projects, social media, and the store." />
   <style>
     body {
       margin: 0;
@@ -15,6 +16,7 @@
       align-items: center;
       min-height: 100vh;
     }
+
     .container {
       background: white;
       border-radius: 16px;
@@ -24,6 +26,7 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       text-align: center;
     }
+
     .profile-img {
       width: 100px;
       height: 100px;
@@ -31,10 +34,12 @@
       object-fit: cover;
       margin-bottom: 16px;
     }
+
     h1 {
       margin: 0 0 12px;
       font-size: 24px;
     }
+
     .link-btn {
       display: block;
       background: #1e88e5;
@@ -45,30 +50,131 @@
       border-radius: 8px;
       text-decoration: none;
       font-weight: 500;
-      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
+
     .link-btn:hover {
       background: #1565c0;
     }
+
+    .link-btn.shake:hover {
+      animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      50% { transform: translateX(4px); }
+      75% { transform: translateX(-4px); }
+      100% { transform: translateX(0); }
+    }
+
     .footer {
       font-size: 12px;
       color: #999;
       margin-top: 20px;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-content p {
+      margin-bottom: 16px;
+    }
+
+    .modal-content button {
+      margin: 0 8px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-confirm {
+      background: #1e88e5;
+      color: white;
+    }
+
+    .btn-cancel {
+      background: #ccc;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://placehold.co/100x100" alt="Profile Image" class="profile-img" />
-    <h1>@yourusername</h1>
+  <main class="container">
+    <header>
+      <img src="https://placehold.co/100x100" alt="Profile image of Your Name" class="profile-img" />
+      <h1>@yourusername</h1>
+    </header>
 
-    <!-- Links -->
-    <a class="link-btn" href="https://yourwebsite.com" target="_blank">🌐 Visit My Website</a>
-    <a class="link-btn" href="https://instagram.com/yourprofile" target="_blank">📸 Instagram</a>
-    <a class="link-btn" href="https://youtube.com/yourchannel" target="_blank">▶️ YouTube</a>
-    <a class="link-btn" href="https://yourstore.com" target="_blank">🛍️ Shop Now</a>
+    <!-- First button with modal -->
+    <a class="link-btn shake" href="#" id="adultLink">🌐 Visit My Website</a>
 
-    <div class="footer">Built with ❤️ using GitHub Pages</div>
+    <a class="link-btn" href="https://instagram.com/yourprofile" target="_blank" rel="noopener">📸 Instagram</a>
+    <a class="link-btn" href="https://youtube.com/yourchannel" target="_blank" rel="noopener">▶️ YouTube</a>
+    <a class="link-btn" href="https://yourstore.com" target="_blank" rel="noopener">🛍️ Shop Now</a>
+
+    <footer class="footer">Built with ❤️ using GitHub Pages</footer>
+  </main>
+
+  <!-- Consent Modal -->
+  <div class="modal" id="consentModal">
+    <div class="modal-content">
+      <p>This link contains content intended for users 18+. Do you wish to proceed?</p>
+      <button class="btn-confirm" id="confirmBtn">Yes, continue</button>
+      <button class="btn-cancel" id="cancelBtn">Cancel</button>
+    </div>
   </div>
+
+  <script>
+    const adultLink = document.getElementById('adultLink');
+    const modal = document.getElementById('consentModal');
+    const confirmBtn = document.getElementById('confirmBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    const targetURL = "https://yourwebsite.com";
+
+    adultLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+
+    confirmBtn.addEventListener('click', function () {
+      window.open(targetURL, '_blank');
+      modal.style.display = 'none';
+    });
+
+    cancelBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function (e) {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
