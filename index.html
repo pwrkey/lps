@@ -3,28 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name | Link Hub</title>
-  <meta name="description" content="Connect with Your Name through website, Instagram, YouTube, and more. Explore personal projects, social media, and the store." />
+  <title>Your Name | Social Links</title>
+  <meta name="description" content="Find me on OnlyFans, Fansly, Instagram, Twitter and Reddit. Curated links and content for followers 18+." />
   <style>
+    /* Reset and base layout */
     body {
       margin: 0;
       font-family: system-ui, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      background: linear-gradient(-45deg, #1e3c72, #ff2a68, #7f00ff, #1e3c72);
+      background-size: 400% 400%;
+      animation: gradientWave 15s ease infinite;
+    }
+
+    @keyframes gradientWave {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
-      background: white;
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 24px;
-      max-width: 400px;
       width: 90%;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     .profile-img {
@@ -33,33 +43,46 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 16px;
+      border: 2px solid #fff;
     }
 
     h1 {
-      margin: 0 0 12px;
+      margin: 0 0 16px;
       font-size: 24px;
+      color: #fff;
     }
 
     .link-btn {
       display: block;
-      background: #1e88e5;
-      color: white;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
       padding: 14px;
       margin: 10px 0;
       border: none;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 500;
-      box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .link-btn:hover {
-      background: #1565c0;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .link-btn.pulse {
+      animation: pulse 1.5s infinite;
     }
 
     .link-btn.shake:hover {
       animation: shake 0.4s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     @keyframes shake {
@@ -72,11 +95,11 @@
 
     .footer {
       font-size: 12px;
-      color: #999;
+      color: #ddd;
       margin-top: 20px;
     }
 
-    /* Modal styles */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -85,18 +108,19 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background: white;
+      background: #222;
+      color: white;
       padding: 20px;
       border-radius: 12px;
       text-align: center;
       max-width: 300px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
     .modal-content p {
@@ -118,7 +142,8 @@
     }
 
     .btn-cancel {
-      background: #ccc;
+      background: #777;
+      color: white;
     }
   </style>
 </head>
@@ -129,12 +154,12 @@
       <h1>@yourusername</h1>
     </header>
 
-    <!-- First button with modal -->
-    <a class="link-btn shake" href="#" id="adultLink">🌐 Visit My Website</a>
-
-    <a class="link-btn" href="https://instagram.com/yourprofile" target="_blank" rel="noopener">📸 Instagram</a>
-    <a class="link-btn" href="https://youtube.com/yourchannel" target="_blank" rel="noopener">▶️ YouTube</a>
-    <a class="link-btn" href="https://yourstore.com" target="_blank" rel="noopener">🛍️ Shop Now</a>
+    <!-- Links -->
+    <a class="link-btn pulse" href="#" id="adultLink">🔞 OnlyFans</a>
+    <a class="link-btn shake" href="https://fansly.com/yourprofile" target="_blank" rel="noopener">💙 Fansly</a>
+    <a class="link-btn shake" href="https://instagram.com/yourprofile" target="_blank" rel="noopener">📸 Instagram</a>
+    <a class="link-btn shake" href="https://twitter.com/yourprofile" target="_blank" rel="noopener">🐦 Twitter</a>
+    <a class="link-btn shake" href="https://reddit.com/user/yourprofile" target="_blank" rel="noopener">👽 Reddit</a>
 
     <footer class="footer">Built with ❤️ using GitHub Pages</footer>
   </main>
@@ -142,7 +167,7 @@
   <!-- Consent Modal -->
   <div class="modal" id="consentModal">
     <div class="modal-content">
-      <p>This link contains content intended for users 18+. Do you wish to proceed?</p>
+      <p>This content is for users 18+. Do you wish to proceed?</p>
       <button class="btn-confirm" id="confirmBtn">Yes, continue</button>
       <button class="btn-cancel" id="cancelBtn">Cancel</button>
     </div>
@@ -154,7 +179,7 @@
     const confirmBtn = document.getElementById('confirmBtn');
     const cancelBtn = document.getElementById('cancelBtn');
 
-    const targetURL = "https://yourwebsite.com";
+    const targetURL = "https://onlyfans.com/yourprofile";
 
     adultLink.addEventListener('click', function (e) {
       e.preventDefault();
